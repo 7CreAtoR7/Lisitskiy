@@ -22,6 +22,8 @@ import android.os.Build
 
 class FilmViewModel(application: Application) : AndroidViewModel(application) {
 
+    // следует передавать через инъекцию DI
+
     private val repository = FilmRepositoryImpl(application)
 
     private val getFilmListUseCase = GetFilmListUseCase(repository)
@@ -92,7 +94,7 @@ class FilmViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    private fun hasInternetConnection(): Boolean {
+    fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<Application>().getSystemService(
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager

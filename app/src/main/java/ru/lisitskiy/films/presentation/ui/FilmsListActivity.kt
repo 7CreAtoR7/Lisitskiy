@@ -156,13 +156,22 @@ class FilmsListActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         adapterFilms.onShopItemClickListener = {
-            if (isOnePaneMode()) {
-                val intent = DetailedFilmActivity.newIntentFilmItem(this, it.filmID)
-                startActivity(intent)
+            if (viewModel.hasInternetConnection()) {
+                if (isOnePaneMode()) {
+                    val intent = DetailedFilmActivity.newIntentFilmItem(this, it.filmID)
+                    startActivity(intent)
+                } else {
+                    // альбомная ориентация
+                    launchLandScapeFragment(DetailedInfoFilmFragment.newInstanceFilmItem(it.filmID))
+                }
             } else {
-                // альбомная ориентация
-                launchLandScapeFragment(DetailedInfoFilmFragment.newInstanceFilmItem(it.filmID))
+                Toast.makeText(
+                    this,
+                    "Произошла ошибка при загрузке данных, проверьте подключение к сети, т.к. данные о фильмах могут быть устаревшими",
+                    Toast.LENGTH_LONG
+                ).show()
             }
+
         }
     }
 
