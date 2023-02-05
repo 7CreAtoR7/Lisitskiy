@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Films</string>
+    <string name="search">Search</string>
+    <string name="_hintSearch">Поиск</string>
+    <string name="_poster">Poster</string>
+
+    <string name="popular">Популярные</string>
+    <string name="favourites">Избранное</string>
+    <string name="movie_itle">Название фильма</string>
+    <string name="genre_year">Жанр и год выпуска</string>
+
 </resources>
